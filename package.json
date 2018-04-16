@@ -2,7 +2,7 @@
   "name": "first-express-server",
   "version": "1.0.0",
   "description": "A Bare-bones Express Server",
-  "main": "index.js",
+  "main": "./lib/app.js",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -30,6 +30,10 @@
   },
   "homepage": "https://github.com/victorbofill/git-template#readme",
   "devDependencies": {
-    "eslint": "^4.19.1"
+    "eslint": "^4.19.1",
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
