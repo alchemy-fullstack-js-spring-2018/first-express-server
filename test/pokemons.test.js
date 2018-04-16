@@ -48,4 +48,15 @@ describe('Pokemen', () => {
             });
     });
 
+    it('updates a pokemon by id', () => {
+        char.type = 'FIRE';
+
+        return request
+            .put(`/pokemons/${char._id}`)
+            .send(char)
+            .then(({ body }) => {
+                assert.deepEqual(body, char);
+            });
+    });
+
 });
