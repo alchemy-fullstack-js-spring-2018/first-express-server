@@ -1,0 +1,26 @@
+{
+  "name": "first-express-server",
+  "version": "1.0.0",
+  "description": "First Express Server",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelihansen/first-express-server.git"
+  },
+  "keywords": [],
+  "author": "Keli Hansen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kelihansen/first-express-server/issues"
+  },
+  "homepage": "https://github.com/kelihansen/first-express-server#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
+}
