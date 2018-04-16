@@ -15,7 +15,37 @@ describe('Pokemen', () => {
     };
 
     it('saves a pokeman', () => {
-        
+        return request
+            .post('/pokemons')
+            .send(bulb)
+            .then(({ body }) => {
+                const { _id } = body;
+                assert.ok(_id);
+                assert.deepEqual(body, { _id, ...bulb });
+                bulb = body;
+                return _id;
+            })
+            .then(_id => Pokemon.findById(_id))
+            .then(found => {
+                assert.deepEqual(found, bulb);
+            });
+    });
+
+    it('saves another pokeman', () => {
+        return request
+            .post('/pokemons')
+            .send(char)
+            .then(({ body }) => {
+                const { _id } = body;
+                assert.ok(_id);
+                assert.deepEqual(body, { _id, ...char });
+                char = body;
+                return _id;
+            })
+            .then(_id => Pokemon.findById(_id))
+            .then(found => {
+                assert.deepEqual(found, char);
+            });
     });
 
 });
