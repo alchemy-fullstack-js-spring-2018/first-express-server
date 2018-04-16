@@ -10,9 +10,9 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "mocha",
-    "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "test": "npm run test:mocah",
+    "test:mocha": "mocha",
+    "test:watch": "nodemon --exec 'npm run test:mocha'"
   },
   "repository": {
     "type": "git",
