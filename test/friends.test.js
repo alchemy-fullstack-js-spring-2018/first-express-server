@@ -56,4 +56,14 @@ describe('Friends Express server', () => {
                 assert.deepEqual(body, [kasey, sam]);
             });
     });
+
+    it('Deletes a friend', () => {
+        return request.delete(`/friends/${sam._id}`)
+            .then(() => {
+                return Friend.findById(sam._id);
+            })
+            .then(found => {
+                assert.isUndefined(found);
+            });
+    });
 });
