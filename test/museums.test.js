@@ -62,15 +62,15 @@ describe('Museum API', () => {
     });
 
     it('updates a museum', () => {
-        met.fee = '$25.00';
-        return request.put(`museums/${met._id}`)
-            .send(met)
+        smithsonian.fee = '$25.00';
+        return request.put(`/museums/${smithsonian._id}`)
+            .send(smithsonian)
             .then(({ body }) => {
-                assert.deepEqual(body, met);
-                return Museum.findById(met._id);
+                assert.deepEqual(body, smithsonian);
+                return Museum.findById(smithsonian._id);
             })
             .then(updated => {
-                assert.deepEqual(updated, met);
+                assert.deepEqual(updated, smithsonian);
             });
     });
 });
