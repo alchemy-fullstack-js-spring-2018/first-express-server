@@ -50,4 +50,14 @@ describe('pets API', () => {
             });
     });
 
+    it('delete pet', () => {
+        return request.delete(`/pets/${tigerShark._id}`)
+            .then(() => {
+                return Pet.findById(tigerShark._id);
+            })
+            .then(found => {
+                assert.isUndefined(found);
+            });
+    });
+
 });
