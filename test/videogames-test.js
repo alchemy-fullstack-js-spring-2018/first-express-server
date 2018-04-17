@@ -4,7 +4,7 @@ const request = require('./request'); //calls on our request file to create an e
 
 describe('Videogame API', () => {
 
-    it('runs a test', () =>{
+    it('runs a test', () =>{ //double check everythings talking,
         assert.ok(true);
 
     });
