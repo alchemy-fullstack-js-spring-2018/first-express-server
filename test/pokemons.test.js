@@ -83,4 +83,25 @@ describe('Pokemen', () => {
             });
     });
 
+    it('deletes a pokemon by id', () => {
+        return request  
+            .del(`/pokemons/${squirt._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, { removed: true });
+                return Pokemon.findById(squirt._id);
+            })
+            .then(deleted => {
+                assert.isUndefined(deleted);
+            });
+    });
+
+    it('returns 404 on no id', () => {
+        return request
+            .get(`/pokemons/${squirt._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+                assert.ok(response.body.error);
+            });
+    });
+
 });
