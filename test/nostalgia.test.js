@@ -70,4 +70,10 @@ describe('Nostalgia API', ()=> {
             });
     });
 
+    it('returns 404 on a bad id', () => {
+        return request.get(`/nostalgia/${tlc._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+            });
+    });
 });
