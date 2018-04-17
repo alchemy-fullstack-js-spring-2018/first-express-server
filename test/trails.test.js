@@ -13,10 +13,10 @@ describe('Trails API', () => {
         length: 2181
     };
 
-    // let cdt = {
-    //     name: 'Continental Divide Trail',
-    //     length: 3100
-    // };
+    let cdt = {
+        name: 'Continental Divide Trail',
+        length: 3100
+    };
 
     it('saves a trail', () => {
         return request.post('/trails')
@@ -36,6 +36,17 @@ describe('Trails API', () => {
             })
             .then(({ body }) => {
                 assert.deepEqual(body, at);
+            });
+    });
+
+    it('get all trails', () => {
+        return Trail.save(cdt)
+            .then(saved => {
+                cdt = saved;
+                return request.get('/trails');
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, [pct, at, cdt]);
             });
     });
 });
