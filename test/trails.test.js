@@ -14,7 +14,7 @@ describe('Trails API', () => {
     };
 
     let cdt = {
-        name: 'Continental Divide Trail',
+        name: 'CDT',
         length: 3100
     };
 
