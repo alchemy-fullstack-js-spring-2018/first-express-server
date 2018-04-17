@@ -43,4 +43,18 @@ describe('Overwatch API', () => {
             });
     });
 
+    it('updates a hero', () => {
+        zen.role = 'DPS Support';
+
+        return request.put(`/heroes/${zen._id}`)
+            .send(zen)
+            .then(({ body }) => {
+                assert.deepEqual(body, zen);
+                return Hero.findById(zen._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, zen);
+            });
+    });
+
 });

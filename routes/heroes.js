@@ -20,4 +20,10 @@ module.exports = router
         Hero.find()
             .then(heroes => res.json(heroes))
             .catch(err => errorHandler(err, req, res));
+    })
+    .put('/:id', (req, res) => {
+        Hero.findByIdAndUpdate(req.params.id, req.body)
+            .then(hero => {
+                res.json(hero);
+            });
     });
