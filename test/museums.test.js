@@ -73,4 +73,12 @@ describe('Museum API', () => {
                 assert.deepEqual(updated, smithsonian);
             });
     });
+
+    it('return a 404 status if id not found', () => {
+        return request.get(`/museums/${met._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+                assert.match(response.body.error, /^Museum with/);
+            });
+    });
 });
