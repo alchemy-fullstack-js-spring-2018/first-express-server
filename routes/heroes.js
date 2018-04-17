@@ -26,4 +26,8 @@ module.exports = router
             .then(hero => {
                 res.json(hero);
             });
+    })
+    .delete('/:id', (req, res) => {
+        Hero.findByIdAndRemove(req.params.id)
+            .then(removed => res.json({ removed }));
     });

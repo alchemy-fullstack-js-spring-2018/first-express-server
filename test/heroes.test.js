@@ -57,4 +57,13 @@ describe('Overwatch API', () => {
             });
     });
 
+    it('deletes a hero', () => {
+        return request.delete(`/heroes/${zen._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, { removed: true });
+                return Hero.findById(zen._id);
+            })
+            .then(deleted => assert.isUndefined(deleted));
+    })
+
 });
