@@ -24,7 +24,7 @@ describe('Cat API', () => {
             });
     });
 
-    it('gets all cats', () => {
+    it('gets all cats (GET)', () => {
         return Cat.save(cheetah)
             .then(saved => {
                 cheetah = saved;
@@ -32,6 +32,13 @@ describe('Cat API', () => {
             })
             .then(({ body }) => {
                 assert.deepEqual(body, [snowLeopard, cheetah]);
+            });
+    });
+
+    it('gets a cat by id (GET)', () => {
+        return request.get(`/cats/${cheetah._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, cheetah);
             });
     });
 });
