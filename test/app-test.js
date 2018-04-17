@@ -55,7 +55,7 @@ describe('E2E Gems', () => {
                 return Gems.findById(pearl._id);
             })
             .then(updated => {
-                assert.deepEqual(updated, garnet);
+                assert.deepEqual(updated, pearl);
             });
     });
 
