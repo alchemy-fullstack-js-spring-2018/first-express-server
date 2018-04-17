@@ -41,4 +41,18 @@ describe('Cat API', () => {
                 assert.deepEqual(body, cheetah);
             });
     });
+
+    it('updates a cat (PUT)', () => {
+        cheetah.commonName = 'Namibian cheetah';
+
+        return request.put(`/cats/${cheetah._id}`)
+            .send(cheetah)
+            .then(({ body }) => {
+                assert.deepEqual(body, cheetah);
+                return Cat.findById(cheetah._id);
+            })
+            .then(found => {
+                assert.deepEqual(found, cheetah);
+            });
+    });
 });
