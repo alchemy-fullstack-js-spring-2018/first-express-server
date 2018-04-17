@@ -64,6 +64,14 @@ describe('Overwatch API', () => {
                 return Hero.findById(zen._id);
             })
             .then(deleted => assert.isUndefined(deleted));
-    })
+    });
+
+    it('returns 404 on bad get', () => {
+        return request.get(`/heroes/${zen._id}`)
+            .then(res => {
+                assert.equal(res.status, 404);
+                assert.ok(res.body.error);
+            });
+    });
 
 });
