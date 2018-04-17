@@ -52,7 +52,7 @@ describe('Museum API', () => {
     });
 
     it('deletes a museum by id', () => {
-        return request.delete(`/pirates/${met._id}`)
+        return request.delete(`/museums/${met._id}`)
             .then(() => {
                 return Museum.findById(met._id);
             })
