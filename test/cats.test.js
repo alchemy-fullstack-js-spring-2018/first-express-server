@@ -55,4 +55,14 @@ describe('Cat API', () => {
                 assert.deepEqual(found, cheetah);
             });
     });
+
+    it('deletes a cat (DELETE)', () => {
+        return request.delete(`/cats/${snowLeopard._id}`)
+            .then(() => {
+                return Cat.findById(snowLeopard._id);
+            })
+            .then(found => {
+                assert.isUndefined(found);
+            });
+    });
 });
