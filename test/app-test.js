@@ -22,25 +22,31 @@ describe('E2E Gems', () => {
             .then(({ body }) => {
                 assert.ok(body._id);
                 assert.deepEqual(body, { _id: body._id, ...garnet });
-            });
-    });
-
-    it('gets a Crystal Gem by id', () => {
-        return Gems.save(pearl)
-            .then(saved => {
-                pearl = saved;
-                return request.get(`/gems/${pearl._id}`);
-            })
-            .then(({ body }) => {
-                assert.deepEqual(body, garnet);
+                garnet = body;
             });
     });
 
     it('gets all Crystal Gems', () => {
-        return request.get('/gems')
+        return request.post('/gems')
+            .send(pearl)
             .then(({ body }) => {
-                assert.deepEqual(body, [pearl, pearl]);
+                pearl = body;
+                return request.get('/gems');
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, [garnet, pearl]);
             });
+    });
+
+    it('gets a Crystal Gem by id', () => {
+        return request.get(`/gems/${pearl._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, pearl);
+            });
+    });
+
+    it('updates a diamond', () => {
+        
     });
 
 
