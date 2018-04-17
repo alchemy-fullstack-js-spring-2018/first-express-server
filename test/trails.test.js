@@ -58,4 +58,14 @@ describe('Trails API', () => {
                 assert.deepEqual(body, cdt);
             });
     });
+
+    it('delete trail by id', () => {
+        return request.del(`/trails/${cdt._id}`)
+            .then(() => {
+                return request.get(`/trails/${cdt._id}`);
+            })
+            .then(trail => {
+                assert.isUndefined(trail);
+            });
+    });
 });
