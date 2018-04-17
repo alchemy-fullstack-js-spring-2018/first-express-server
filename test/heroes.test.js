@@ -21,16 +21,25 @@ describe('Overwatch API', () => {
         return request.post('/heroes')
             .send(genji)
             .then(({ body }) => {
-                console.log(body);
                 assert.ok(body._id);
                 genji = body;
+            });
+    });
+    it('gets by id', () => {
+        return Hero.save(zen)
+            .then(saved => {
+                zen = saved;
+                return request.get(`/heroes/${zen._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, zen);
             });
     });
 
     it('gets all heroes', () => {
         return request.get('/heroes')
             .then(({ body }) => {
-                assert.deepEqual(body, [genji]);
+                assert.deepEqual(body, [genji, zen]);
             });
     });
 
