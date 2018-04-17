@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const request = require('./request');
-const Resource = require('../lib/models/model');
+const Nostalgia = require('../lib/models/model');
 
 
 describe('Nostalgia API', ()=> {
@@ -24,6 +24,17 @@ describe('Nostalgia API', ()=> {
                 assert.ok(body._id);
                 assert.deepEqual(body, { _id: body._id, ...destiny });
                 destiny = body;
+            });
+    });
+
+    it('gets band by id', () => {
+        return Nostalgia.save(tlc)
+            .then(band => {
+                tlc = band;
+                return request.get(`/nostalgia/${tlc._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, tlc);
             });
     });
 });
