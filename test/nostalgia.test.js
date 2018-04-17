@@ -37,4 +37,37 @@ describe('Nostalgia API', ()=> {
                 assert.deepEqual(body, tlc);
             });
     });
+
+    it('update a pirate', () => {
+        destiny.hit = 'Say My Name';
+
+        return request.put(`/nostalgia/${destiny._id}`)
+            .send(destiny)
+            .then(({ body }) => {
+                assert.deepEqual(body, destiny);
+                return Nostalgia.findById(destiny._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, destiny);
+            });
+    });
+
+    it.skip('gets all bands', () => {
+        return request.get('/nostalgia')
+            .then(({ body }) => {
+                assert.deepInclude(body, destiny);
+                assert.deepInclude(body, tlc);
+            });
+    });
+
+    it('deletes a band', () => {
+        return request.delete(`/nostalgia/${tlc._id}`)
+            .then(() => {
+                return Nostalgia.findById(tlc._id);
+            })
+            .then(found => {
+                assert.isUndefined(found);
+            });
+    });
+
 });
