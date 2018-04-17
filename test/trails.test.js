@@ -49,4 +49,13 @@ describe('Trails API', () => {
                 assert.deepEqual(body, [pct, at, cdt]);
             });
     });
+
+    it('update trail by id', () => {
+        cdt.name = 'Continental Divide Trail';
+        return request.put(`/trails/${cdt._id}`)
+            .send(cdt)
+            .then(({ body }) => {
+                assert.deepEqual(body, cdt);
+            });
+    });
 });
