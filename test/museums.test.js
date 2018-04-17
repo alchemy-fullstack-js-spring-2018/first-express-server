@@ -28,6 +28,8 @@ describe('Museum API', () => {
             .send(smithsonian)
             .then(({ body }) => {
                 assert.ok(body._id);
+                assert.deepEqual(body, { _id: body._id, ...smithsonian });
+                smithsonian = body;
             });
     });
 });
