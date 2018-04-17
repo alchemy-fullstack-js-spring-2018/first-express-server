@@ -14,6 +14,11 @@ describe('Pokemen', () => {
         type: 'Fire'
     };
 
+    let squirt = {
+        name: 'Squirtle',
+        type: 'Water'
+    };
+
     it('saves a pokeman', () => {
         return request
             .post('/pokemons')
@@ -60,13 +65,21 @@ describe('Pokemen', () => {
     });
 
     it('gets a pokeman by id', () => {
-        return Pokemon.save(char)
+        return Pokemon.save(squirt)
             .then(saved => {
-                char = saved; 
-                return request.get(`/pokemons/${char._id}`);
+                squirt = saved; 
+                return request.get(`/pokemons/${squirt._id}`);
             })
             .then(({ body }) => {
-                assert.deepEqual(body, char);
+                assert.deepEqual(body, squirt);
+            });
+    });
+
+    it('gets all pokemen', () => {
+        return request
+            .get('/pokemons')
+            .then(({ body }) => {
+                assert.deepEqual(body, [bulb, char, squirt]);
             });
     });
 
