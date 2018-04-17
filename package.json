@@ -12,7 +12,7 @@
     "db:delete": "node drop-tables.js",
     "db:load": "node load-db.js",
     "lint": "eslint .",
-    "//pretest": "npm run lint",
+    "pretest": "npm run lint",
     "mocha": "mocha",
     "test": "npm run mocha",
     "test:watch": "npm run mocha -- -w",
