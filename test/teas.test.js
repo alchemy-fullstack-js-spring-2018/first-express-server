@@ -59,4 +59,21 @@ describe('tea', () => {
                 assert.deepEqual(updated, greenTea);
             });
     });
+
+    it('gets all teas', () => {
+        return request.get('/teas')
+            .then(({ body }) => {
+                assert.deepEqual(body, [earlGrey, greenTea]);
+            });
+    });
+
+    it('deletes a tea by id', () => {
+        return request.delete(`/teas/${greenTea._id}`)
+            .then(() => {
+                return Tea.findById(greenTea._id);
+            })
+            .then(found => {
+                assert.isUndefined(found);
+            });
+    });
 });
