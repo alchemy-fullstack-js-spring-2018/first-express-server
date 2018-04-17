@@ -45,7 +45,7 @@ describe('E2E Gems', () => {
             });
     });
 
-    it('updates a diamond', () => {
+    it('updates a Crystal Gem', () => {
         pearl.type = 'Renegade Servant';
 
         return request.put(`/gems/${pearl._id}`)
@@ -59,5 +59,22 @@ describe('E2E Gems', () => {
             });
     });
 
+    it('removes a Crystal Gem', () => {
+        return request.delete(`/gems/${pearl._id}`)
+            .then(() => {
+                return Gems.findById(pearl._id);
+            })
+            .then(deleted => {
+                assert.isUndefined(deleted);
+            });
+    });
+
+    it('Sends a 404 if id not found', () => {
+        return request.get(`/gems/${pearl._id}`)
+            .then(res => {
+                assert.equal(res.status, 404);
+                assert.include(res.body.error, pearl._id, 'Pearl is dead');
+            });
+    });
 
 });
