@@ -60,4 +60,17 @@ describe('Museum API', () => {
                 assert.isUndefined(response);
             });
     });
+
+    it('updates a museum', () => {
+        met.fee = '$25.00';
+        return request.put(`museums/${met._id}`)
+            .send(met)
+            .then(({ body }) => {
+                assert.deepEqual(body, met);
+                return Museum.findById(met._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, met);
+            });
+    });
 });
