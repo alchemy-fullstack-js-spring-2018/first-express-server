@@ -6,8 +6,8 @@ const Nostalgia = require('../lib/models/model');
 describe('Nostalgia API', ()=> {
 
     let destiny = {
-        band: `Destiny's Child`,
-        type:  `Girl group`,
+        band: 'Destiny\'s Child',
+        type:  'Girl group',
         hit: 'Bills Bills Bills'
     };
 
@@ -52,11 +52,10 @@ describe('Nostalgia API', ()=> {
             });
     });
 
-    it.skip('gets all bands', () => {
+    it('gets all bands', () => {
         return request.get('/nostalgia')
             .then(({ body }) => {
-                assert.deepInclude(body, destiny);
-                assert.deepInclude(body, tlc);
+                assert.deepEqual(body, { bands: [destiny, tlc] });
             });
     });
 
