@@ -4,10 +4,10 @@ const Pet = require('../lib/models/model');
 
 describe('pets API', () => {
 
-    let tigerShark = {
-        name: 'tiger',
-        size: 'decent',
-    };
+    // let tigerShark = {
+    //     name: 'tiger',
+    //     size: 'decent',
+    // };
 
     let rhino = {
         name: 'rhinocerus',
