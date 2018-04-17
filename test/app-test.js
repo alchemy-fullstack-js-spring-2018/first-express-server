@@ -24,7 +24,7 @@ describe('E2E Gems', () => {
             .send(garnet)
             .then(({ body }) => {
                 assert.ok(body._id);
-                assert.equal(body, { _id: body._id, ...pearl });
+                assert.deepEqual(body, { _id: body._id, ...garnet });
             });
     });
 
