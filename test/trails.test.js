@@ -70,7 +70,8 @@ describe('Trails API', () => {
             });
     });
 
-    it.only('returns 404 on get of non-existant id', () => {
+    it('returns 404 on get of non-existant id', () => {
+        console.log('ID!!!!!', cdt._id);
         return request.get(`/trails/${cdt._id}`)
             .then(response => {
                 // console.log('RESPONSE!!!!', response);
