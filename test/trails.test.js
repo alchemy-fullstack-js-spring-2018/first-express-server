@@ -68,4 +68,12 @@ describe('Trails API', () => {
                 assert.isUndefined(found);
             });
     });
+
+    it('returns 404 on get of non-existant id', () => {
+        return request.get(`/trails/${cdt._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+                assert.match(response.error, /^Trail id/);
+            });
+    });
 });
