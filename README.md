@@ -1,15 +1,16 @@
-# Projects Server
-## Mongo Half Stack app built as a student exercise for Alchemy Code Lab
+# Museums server
+## Express app built as a student exercise for Alchemy Code Lab
 
 ## Author: Charly Welch
 <blwbiology@gmail.com>
 
 ## Description
-Save projects to a mongo database. Projects have the following properties:
+Save museums to a mongo database. Museums have the following properties:
 - name
-- budget
-- timeline
-- _id added by Mongo
+- location
+
+... and all the usual CRUD methods.
+
 
 ## Dependencies:
 - chai
@@ -18,4 +19,4 @@ Save projects to a mongo database. Projects have the following properties:
 - mocha
 - nodemon
 - dotenv
-- mongodb
+- express
