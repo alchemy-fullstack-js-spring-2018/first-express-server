@@ -12,4 +12,4 @@ const request = chai.request(server).keepOpen();
 
 after(() => server.close());
 
-module.exports = request;
+module.exports = request; //this module lets us create a server for our database to be called.
