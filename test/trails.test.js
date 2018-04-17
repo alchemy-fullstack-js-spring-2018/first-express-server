@@ -55,7 +55,6 @@ describe('Trails API', () => {
         return request.put(`/trails/${cdt._id}`)
             .send(cdt)
             .then(({ body }) => {
-                console.log(body.name);
                 assert.deepEqual(body, cdt);
             });
     });
