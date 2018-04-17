@@ -48,6 +48,16 @@ describe('Museum API', () => {
         return request.get('/museums')
             .then(({ body }) => {
                 assert.deepEqual(body, [smithsonian, met]);
+            });
+    });
+
+    it('deletes a museum by id', () => {
+        return request.delete(`/pirates/${met._id}`)
+            .then(() => {
+                return Museum.findById(met._id);
             })
-    })
+            .then(response => {
+                assert.isUndefined(response);
+            });
+    });
 });
