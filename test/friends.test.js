@@ -17,12 +17,11 @@ describe('Friends Express server', () => {
 
     it('Saves a new friend', () => {
         return request.post('/friends')
-            .send(sam)
+            .send(kasey)
             .then(( { body }) => {
                 assert.ok(body._id);
-                console.log(body);
-                assert.deepEqual(body, { _id: body._id, ...sam });
-                sam = body;
+                assert.deepEqual(body, { _id: body._id, ...kasey });
+                kasey = body;
             });
     });
 
@@ -48,6 +47,13 @@ describe('Friends Express server', () => {
             })
             .then(updated => {
                 assert.deepEqual(updated, sam);
+            });
+    });
+
+    it('Gets all friends', () => {
+        return request.get('/friends')
+            .then(({ body }) => {
+                assert.deepEqual(body, [kasey, sam]);
             });
     });
 });
