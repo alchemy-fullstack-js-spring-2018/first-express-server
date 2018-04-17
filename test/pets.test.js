@@ -74,4 +74,11 @@ describe('pets API', () => {
             });
     });
 
+    it('404 for wrong id', () => {
+        return request.get('/pets/asd')
+            .then(response => {
+                assert.equal(response.status, 404);
+                assert.match(response.body.error, /^Pet id/);
+            });
+    });
 });
