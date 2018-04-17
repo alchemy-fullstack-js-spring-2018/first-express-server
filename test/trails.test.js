@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const request = require('./request');
-// const trail = require('../lib/models/trail');
+const Trail = require('../lib/models/trail');
 
 describe('Trails API', () => {
     let pct = {
@@ -8,10 +8,10 @@ describe('Trails API', () => {
         length: 2650
     };
 
-    // let at = {
-    //     name: 'Appalachian Trail',
-    //     length: 2181
-    // };
+    let at = {
+        name: 'Appalachian Trail',
+        length: 2181
+    };
 
     // let cdt = {
     //     name: 'Continental Divide Trail',
@@ -25,6 +25,17 @@ describe('Trails API', () => {
                 assert.ok(body._id);
                 assert.deepEqual(body, { _id: body._id, ...pct });
                 pct = body;
+            });
+    });
+
+    it('get trail by id', () => {
+        return Trail.save(at)
+            .then(saved => {
+                at = saved;
+                return request.get(`/trails/${at._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, at);
             });
     });
 });
