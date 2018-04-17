@@ -9,6 +9,11 @@ describe('Cat API', () => {
         scientificName: 'Panthera uncia'
     };
 
+    let cheetah = {
+        commonName: 'cheetah',
+        scientificName: 'Acinonyx jubatus'
+    };
+
     it('saves a cat (POST)', () => {
         return request.post('/cats')
             .send(snowLeopard)
@@ -16,6 +21,17 @@ describe('Cat API', () => {
                 assert.ok(body._id);
                 assert.deepEqual(body, { _id: body._id, ...snowLeopard });
                 snowLeopard = body;
+            });
+    });
+
+    it('gets all cats', () => {
+        return Cat.save(cheetah)
+            .then(saved => {
+                cheetah = saved;
+                return request.get('/cats');
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, [snowLeopard, cheetah]);
             });
     });
 });
