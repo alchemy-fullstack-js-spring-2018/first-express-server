@@ -13,8 +13,14 @@ module.exports = router
     .get('/:id', (req, res) => {
         Hero.findById(req.params.id)
             .then(hero => {
-                res.json(hero);
-            });
+                if(!hero) {
+                    errorHandler({
+                        status: 404,
+                        error: `Hero id ${req.params.id} does not exist`
+                    }, req, res);
+                } else res.json(hero);
+            })
+            .catch(err => errorHandler(err, req, res));
     })
     .get('/', (req, res) => {
         Hero.find()
@@ -25,9 +31,11 @@ module.exports = router
         Hero.findByIdAndUpdate(req.params.id, req.body)
             .then(hero => {
                 res.json(hero);
-            });
+            })
+            .catch(err => errorHandler(err, req, res));
     })
     .delete('/:id', (req, res) => {
         Hero.findByIdAndRemove(req.params.id)
-            .then(removed => res.json({ removed }));
+            .then(removed => res.json({ removed }))
+            .catch(err => errorHandler(err, req, res));
     });
