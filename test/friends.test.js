@@ -66,4 +66,12 @@ describe('Friends Express server', () => {
                 assert.isUndefined(found);
             });
     });
+
+    it('Returns a 404 on GET of non-existing ID', () => {
+        return request.get(`/friends/${sam._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+                assert.match(response.body.error, /^Friend id/);
+            });
+    });
 });
