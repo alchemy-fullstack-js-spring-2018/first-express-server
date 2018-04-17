@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const request = require('./request');
-const trail = require('../lib/models/model');
+const trail = require('../lib/models/trail');
 
 describe('Trails API', () => {
     let pct = {
