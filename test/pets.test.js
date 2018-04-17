@@ -4,10 +4,10 @@ const Pet = require('../lib/models/model');
 
 describe('pets API', () => {
 
-    // let tigerShark = {
-    //     name: 'tiger',
-    //     size: 'decent',
-    // };
+    let tigerShark = {
+        name: 'tiger',
+        size: 'decent',
+    };
 
     let rhino = {
         name: 'rhinocerus',
@@ -36,6 +36,17 @@ describe('pets API', () => {
             .get('/pets')
             .then(({ body }) => {
                 assert.deepEqual(body, [rhino]);
+            });
+    });
+
+    it('get a pet by id', () => {
+        return Pet.save(tigerShark)
+            .then(saved => {
+                tigerShark = saved;
+                return request.get(`/pets/${tigerShark._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, tigerShark);
             });
     });
 
