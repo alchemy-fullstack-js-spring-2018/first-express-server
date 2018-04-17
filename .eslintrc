@@ -11,7 +11,9 @@
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 6,
-    "ecmaFeatures": {"impliedStrict": true}
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true}
   },
   "env": {
     "browser": true,

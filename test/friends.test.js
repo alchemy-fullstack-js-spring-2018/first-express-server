@@ -20,8 +20,9 @@ describe('Friends Express server', () => {
             .send(sam)
             .then(( { body }) => {
                 assert.ok(body._id);
-                assert.deepEqual(body.model, {_id: body._id, ...sam });
+                console.log(body);
+                assert.deepEqual(body, { _id: body._id, ...sam });
                 sam = body;
-            })
+            });
     });
 });
