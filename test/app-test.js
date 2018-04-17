@@ -46,7 +46,17 @@ describe('E2E Gems', () => {
     });
 
     it('updates a diamond', () => {
-        
+        pearl.type = 'Renegade Servant';
+
+        return request.put(`/gems/${pearl._id}`)
+            .send(pearl)
+            .then(({ body }) => {
+                assert.deepEqual(body, pearl);
+                return Gems.findById(pearl._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, garnet);
+            });
     });
 
 
