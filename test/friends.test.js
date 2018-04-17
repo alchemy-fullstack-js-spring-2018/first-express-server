@@ -25,4 +25,15 @@ describe('Friends Express server', () => {
                 sam = body;
             });
     });
+
+    it('Gets a friend by ID', () => {
+        return Friend.save(sam)
+            .then(saved => {
+                sam = saved;
+                return request.get(`/friends/${sam._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, sam);
+            });
+    });
 });
