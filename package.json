@@ -1,0 +1,27 @@
+{
+  "name": "first-express-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "models.test.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katlyn75/first-express-server.git"
+  },
+  "author": "Katlyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katlyn75/first-express-server/issues"
+  },
+  "homepage": "https://github.com/katlyn75/first-express-server#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
