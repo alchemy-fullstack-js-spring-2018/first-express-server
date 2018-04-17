@@ -60,4 +60,18 @@ describe('pets API', () => {
             });
     });
 
+    it('update a pet', () => {
+        rhino.size = 'huge';
+
+        return request.put(`/pets/${rhino._id}`)
+            .send(rhino)
+            .then(({ body }) => {
+                assert.deepEqual(body, rhino);
+                return Pet.findById(rhino._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, rhino);
+            });
+    });
+
 });
