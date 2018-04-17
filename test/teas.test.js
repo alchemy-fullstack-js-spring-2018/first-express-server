@@ -45,4 +45,18 @@ describe('tea', () => {
                 assert.deepEqual(body, greenTea);
             });
     });
+
+    it('updates tea', () => {
+        greenTea.recommended = 'no';
+
+        return request.put(`/teas/${greenTea._id}`)
+            .send(greenTea)
+            .then(({ body }) => {
+                assert.deepEqual(body, greenTea);
+                return Tea.findById(greenTea._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, greenTea);
+            });
+    });
 });
