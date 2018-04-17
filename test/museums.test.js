@@ -32,4 +32,15 @@ describe('Museum API', () => {
                 smithsonian = body;
             });
     });
+
+    it('gets a museum by id', () => {
+        return Museum.save(met)
+            .then(saved => {
+                met = saved;
+                return request.get(`/museums/${met._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, met);
+            });
+    });
 });
