@@ -16,15 +16,6 @@ describe('tea', () => {
         good: false
     };
 
-    // let data = {};
-
-    // it('saves & gets tea', () => {
-    //     return Tea.save(data)
-    //         .then(saved => {
-    //             assert.ok(saved._id);
-    //         });
-    // });
-
     it('saves a tea', () => {
         return request.post('/teas')
             .send(earlGrey)
