@@ -64,8 +64,8 @@ describe('Trails API', () => {
             .then(() => {
                 return request.get(`/trails/${cdt._id}`);
             })
-            .then(trail => {
-                assert.isUndefined(trail);
+            .then(found => {
+                assert.isUndefined(found);
             });
     });
 });
