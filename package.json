@@ -1,0 +1,35 @@
+{
+  "name": "first-express-server",
+  "version": "1.0.0",
+  "description": "Express Server ===",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "npm run test:mocah",
+    "test:mocha": "mocha",
+    "test:watch": "nodemon --exec 'npm run test:mocha'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephaniesmith/first-express-server.git"
+  },
+  "author": "Stephanie Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephaniesmith/first-express-server/issues"
+  },
+  "homepage": "https://github.com/stephaniesmith/first-express-server#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "mocha": "^5.1.0",
+    "nodemon": "^1.17.3"
+  }
+}
