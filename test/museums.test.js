@@ -16,11 +16,18 @@ describe('Museum API', () => {
         location: 'Boston, MA'
     };
 
-    it('saves and gets a museum', () => {
-        return Museum.save(smithsonian)
-            .then(saved => {
-                assert.deepEqual(saved, { _id: saved._id, ...smithsonian })
+    // it('saves and gets a museum', () => {
+    //     return Museum.save(smithsonian)
+    //         .then(saved => {
+    //             assert.deepEqual(saved, { _id: saved._id, ...smithsonian })
+    //         });
+    // });
+
+    it('saves a museum', () => {
+        return request.post('/museums')
+            .send(smithsonian)
+            .then(({ body }) => {
+                assert.ok(body._id);
             });
     });
-
 });
