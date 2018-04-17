@@ -2,14 +2,29 @@
   "name": "first-express-server",
   "version": "1.0.0",
   "description": "",
-  "main": "models.test.js",
+  "main": "server.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "eslint": "^4.19.1",
+    "mocha": "^5.1.0",
+    "nodemon": "^1.17.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "npm run test mocha",
+    "test:mocha": "mocha",
+    "test:watch": "nodemon --exec 'npm run test:mocha"
   },
   "repository": {
     "type": "git",
@@ -20,8 +35,5 @@
   "bugs": {
     "url": "https://github.com/katlyn75/first-express-server/issues"
   },
-  "homepage": "https://github.com/katlyn75/first-express-server#readme",
-  "dependencies": {
-    "express": "^4.16.3"
-  }
+  "homepage": "https://github.com/katlyn75/first-express-server#readme"
 }
