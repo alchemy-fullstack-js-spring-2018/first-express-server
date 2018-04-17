@@ -31,4 +31,12 @@ describe('pets API', () => {
             });
     });
 
+    it('gets all pets', () => {
+        return request
+            .get('/pets')
+            .then(({ body }) => {
+                assert.deepEqual(body, [rhino]);
+            });
+    });
+
 });
