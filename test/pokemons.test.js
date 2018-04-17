@@ -59,4 +59,15 @@ describe('Pokemen', () => {
             });
     });
 
+    it('gets a pokeman by id', () => {
+        return Pokemon.save(char)
+            .then(saved => {
+                char = saved; 
+                return request.get(`/pokemons/${char._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, char);
+            });
+    });
+
 });
