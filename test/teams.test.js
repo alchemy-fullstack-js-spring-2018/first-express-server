@@ -4,17 +4,17 @@ const request = require('./request');
 
 describe('team', () => {
 
-    let Seahawks = {
-        name: 'Seattle Seahawks',
-        division: 'NFC west',
-        winning: true
-    };
+    // let Seahawks = {
+    //     name: 'Seattle Seahawks',
+    //     division: 'NFC west',
+    //     winning: true
+    // };
 
-    let Rams = {
-        name: 'LA Rams',
-        division: 'NFC west',
-        winning: true
-    };
+    // let Rams = {
+    //     name: 'LA Rams',
+    //     division: 'NFC west',
+    //     winning: true
+    // };
 
     let Cardinals = {
         name: 'Arizona Cardinals',
