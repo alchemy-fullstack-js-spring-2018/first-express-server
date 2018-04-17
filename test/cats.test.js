@@ -65,4 +65,11 @@ describe('Cat API', () => {
                 assert.isUndefined(found);
             });
     });
+
+    it('returns a 404 if id not found (GET)', () => {
+        return request.get(`/cats/${snowLeopard._id}`)
+            .then(response => {
+                assert.strictEqual(response.status, 404);
+            });
+    });
 });
