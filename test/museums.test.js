@@ -43,4 +43,11 @@ describe('Museum API', () => {
                 assert.deepEqual(body, met);
             });
     });
+
+    it('gets all museums', () => {
+        return request.get('/museums')
+            .then(({ body }) => {
+                assert.deepEqual(body, [smithsonian, met]);
+            })
+    })
 });
