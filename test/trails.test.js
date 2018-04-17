@@ -62,7 +62,7 @@ describe('Trails API', () => {
     it('delete trail by id', () => {
         return request.del(`/trails/${cdt._id}`)
             .then(() => {
-                return request.get(`/trails/${cdt._id}`);
+                return Trail.findById(`/trails/${cdt._id}`);
             })
             .then(found => {
                 assert.isUndefined(found);
