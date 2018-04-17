@@ -36,4 +36,18 @@ describe('Friends Express server', () => {
                 assert.deepEqual(body, sam);
             });
     });
+
+    it('Updates a friend', () => {
+        sam.son = 'Thomas';
+
+        return request.put(`/friends/${sam._id}`)
+            .send(sam)
+            .then(({ body }) => {
+                assert.deepEqual(body, sam);
+                return Friend.findById(sam._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, sam);
+            });
+    });
 });
