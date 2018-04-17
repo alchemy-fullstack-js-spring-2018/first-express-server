@@ -22,13 +22,7 @@ describe('team', () => {
         winning: null
     };
 
-    it('gets all teams', () => {
-        return request.get('/teams')
-            .then(({ body }) => {
-                assert.deepEqual(body, [Seahawks, Rams, Cardinals]);
-            });
-    });
-
+    
     it('saves a team', () => {
         return request.post('/teams')
             .send(Cardinals)
@@ -38,5 +32,11 @@ describe('team', () => {
                 Cardinals = body;
             });
     });
-
+    
+    it('gets all teams', () => {
+        return request.get('/teams')
+            .then(({ body }) => {
+                assert.deepEqual(body, [Cardinals]);
+            });
+    });
 });
