@@ -1,0 +1,38 @@
+{
+  "name": "first-express-server",
+  "version": "1.0.0",
+  "description": "firest express server",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "eslint": "^4.19.1",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.3",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "npm run test:mocha",
+    "test:mocha": "mocha",
+    "start": "nodemon --exec 'npm run test:mocha'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/J3ffcon1/first-express-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J3ffcon1/first-express-server/issues"
+  },
+  "homepage": "https://github.com/J3ffcon1/first-express-server"
+}
