@@ -12,7 +12,7 @@ describe('Videogame API', () => {
 
     let undertale = {
         name: 'Undertale',
-        develoepr: 'Toby Fox',
+        developer: 'Toby Fox',
         gametype: 'indie'
     };
 
@@ -29,6 +29,31 @@ describe('Videogame API', () => {
                 assert.ok(body._id);
                 assert.deepEqual(body, { _id: body._id, ...armello });
                 armello = body;
+            });
+    });
+
+    it('gets game by its id', () => {
+        return videogames.save(undertale)
+            .then(body => {
+                undertale = body;
+                return request.get(`/videogames/${undertale._id}`);
+            })
+            .then(({ body }) => {
+                assert.deetEqual(body, undertale);
+            });
+    });
+
+    it('update a game', () => {
+        armello.name = 'Settlers of Catan';
+
+        return request.put(`/videogames/${armello._id}`)
+            .send(armello)
+            .then(({ body }) => {
+                assert.deepEqual(body, armello);
+                return videogames.findById(armello._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, armello);
             });
     });
 
