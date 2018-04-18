@@ -57,5 +57,28 @@ describe('Videogame API', () => {
             });
     });
 
+    it('Gets all games', () => {
+        return request.get('/videogames')
+            .then(({ body }) => {
+                assert.deepEqual(body, { games: [armello, undertale] });
+            });
+    });
+
+    it('deletes a game', () => {
+        return request.delete(`/videogames/${undertale._id}`)
+            .then(() => {
+                return videogames.findById(undertale._id);
+            })
+            .then(found => {
+                assert.isUndefined(found);
+            });
+    });
+
+    it('returns 404 on a missing id', () => {
+        return request.get(`/videogames/${undertale._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+            }); 
+    });
 
 });
