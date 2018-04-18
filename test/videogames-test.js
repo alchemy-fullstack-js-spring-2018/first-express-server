@@ -39,7 +39,7 @@ describe('Videogame API', () => {
                 return request.get(`/videogames/${undertale._id}`);
             })
             .then(({ body }) => {
-                assert.deetEqual(body, undertale);
+                assert.deepEqual(body, undertale);
             });
     });
 
