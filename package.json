@@ -21,7 +21,7 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "npm run test mocha",
+    "test": "npm run test:mocha",
     "test:mocha": "mocha",
     "test:watch": "nodemon --exec 'npm run test:mocha",
     "start": "node server.js"

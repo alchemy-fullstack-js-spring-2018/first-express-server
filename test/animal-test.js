@@ -1,6 +1,7 @@
 const { assert } = require('chai');
-const request = require('/request');
-//const Animal = require('../lib/models/animal');
+const request = require('./request');
+//const animal = require('../lib/models/animal');
+//const animals = require('../routes/animals');
 
 
 
@@ -17,7 +18,7 @@ describe('Animals API', () => {
     };*/
 
     it('saves an animal', () => {
-        return request.post('/animals')
+        return request.post('/animal')
             .send(max)
             .then(({ body }) => {
                 assert.ok(body._id);
