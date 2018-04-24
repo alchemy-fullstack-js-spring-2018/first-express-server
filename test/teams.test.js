@@ -50,4 +50,18 @@ describe('team', () => {
                 assert.deepEqual(body, Cardinals);
             });
     });
+
+    it('updates a team', () => {
+        Cardinals.winning = 'null';
+
+        return request.put(`/teams/${Cardinals._id}`)
+            .send(Cardinals)
+            .then(({ body }) => {
+                assert.deepEqual(body, Cardinals);
+                return Team.findById(Cardinals._id);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, Cardinals);
+            });
+    });
 });
