@@ -1,5 +1,3 @@
-/*eslint no-console: off */
-
 const http = require('http');
 const app = require('.lib/app');
 
@@ -9,5 +7,5 @@ const server = http.createServer(app);
 
 
 server.listen(PORT, () => {
-    console.log('server hears you', server.address().port());
+// console.log('server hears you', server.address().port());
 });

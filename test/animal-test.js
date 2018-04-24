@@ -1,28 +1,28 @@
 const { assert } = require('chai');
 const request = require('/request');
-//const animals = require('../lib/animals');
+//const Animal = require('../lib/models/animal');
 
 
 
-describe('animals', () => {
+describe('Animals API', () => {
 
-    /*let max = {
+    let max = {
         name: 'Max',
         type: 'lion'
-    };*/
+    };
 
-    let snappy = {
+    /*let snappy = {
         name: 'Snappy',
         type: 'alligator'
-    };
+    };*/
 
     it('saves an animal', () => {
         return request.post('/animals')
-            .send(snappy)
+            .send(max)
             .then(({ body }) => {
                 assert.ok(body._id);
-                assert.deepEqual(body, { _id: body._id, snappy });
-                snappy = body;
+                assert.deepEqual(body, { _id: body._id, ...max });
+                max = body;
             });
     });
 });
