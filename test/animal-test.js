@@ -12,10 +12,10 @@ describe('Animals API', () => {
         type: 'lion'
     };
 
-    /*let snappy = {
+    let snappy = {
         name: 'Snappy',
         type: 'alligator'
-    };*/
+    };
 
     
     it('saves an animal', () => {
@@ -29,20 +29,20 @@ describe('Animals API', () => {
     });
     
     it('gets an animal by id', () => {
-        return Animal.save(max)
+        return Animal.save(snappy)
             .then(saved => {
-                max = saved;
-                return request.get(`/animals/${max._id}`);
+                snappy = saved;
+                return request.get(`/animal/${snappy._id}`);
             })
             .then(({ body }) => {
-                assert.deepEqual(body, max);
+                assert.deepEqual(body, snappy);
             });
     });
     
     it('gets all animals', ()=> {
         return request.get('/animal')
             .then(({ body }) => {
-                assert.deepEqual(body, [max]);
+                assert.deepEqual(body, [max, snappy]);
             });
     });
 
