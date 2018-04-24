@@ -51,6 +51,14 @@ describe('team', () => {
             });
     });
 
+    it('returns 404 on request with no id', () => {
+        return request.get(`/teas/${Cardinals._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+                assert.match(response.body.error, /undefined/);
+            });
+    });
+
     it('updates a team', () => {
         Cardinals.winning = 'null';
 
