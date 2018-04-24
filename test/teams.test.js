@@ -4,17 +4,17 @@ const Team = require('../lib/models/Team');
 
 describe('team', () => {
 
-    // let Seahawks = {
-    //     name: 'Seattle Seahawks',
-    //     division: 'NFC west',
-    //     winning: true
-    // };
+    let Seahawks = {
+        name: 'Seattle Seahawks',
+        division: 'NFC west',
+        winning: true
+    };
 
-    // let Rams = {
-    //     name: 'LA Rams',
-    //     division: 'NFC west',
-    //     winning: true
-    // };
+    let Rams = {
+        name: 'LA Rams',
+        division: 'NFC west',
+        winning: true
+    };
 
     let Cardinals = {
         name: 'Arizona Cardinals',
@@ -70,6 +70,16 @@ describe('team', () => {
             })
             .then(updated => {
                 assert.deepEqual(updated, Cardinals);
+            });
+    });
+
+    it('deletes a team by id', () => {
+        return request.delete(`/teams/${Cardinals._id}`)
+            .then(() => {
+                return Team.findById(Cardinals._id);
+            })
+            .then(found => {
+                assert.isUndefined(found);
             });
     });
 });
