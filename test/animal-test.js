@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const request = require('./request');
-//const Animal = require('../lib/models/animal');
+const Animal = require('../lib/models/animal');
 //const animals = require('../routes/animals');
 
 
@@ -28,6 +28,16 @@ describe('Animals API', () => {
             });
     });
     
+    it('gets an animal by id', () => {
+        return Animal.save(max)
+            .then(saved => {
+                max = saved;
+                return request.get(`/animals/${max._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, max);
+            });
+    });
     
     it('gets all animals', ()=> {
         return request.get('/animal')
@@ -35,4 +45,5 @@ describe('Animals API', () => {
                 assert.deepEqual(body, [max]);
             });
     });
+
 });
